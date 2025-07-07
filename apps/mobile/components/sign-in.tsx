@@ -18,42 +18,47 @@ export function SignIn() {
 		setIsLoading(true);
 		setError(null);
 
-		await authClient.signIn.email(
-			{
-				email,
-				password,
-			},
-			{
-				onError: (error) => {
-					setError(error.error?.message || "Failed to sign in");
-					setIsLoading(false);
+		try {
+			await authClient.signIn.email(
+				{
+					email,
+					password,
 				},
-				onSuccess: () => {
-					setEmail("");
-					setPassword("");
-					queryClient.refetchQueries();
+				{
+					onError: (error) => {
+						console.log(error);
+						setError(error.error?.message || "Failed to sign in");
+						setIsLoading(false);
+					},
+					onSuccess: () => {
+						setEmail("");
+						setPassword("");
+						//   queryClient.refetchQueries();
+					},
+					onFinished: () => {
+						setIsLoading(false);
+					},
 				},
-				onFinished: () => {
-					setIsLoading(false);
-				},
-			},
-		);
+			);
+		} catch (error) {
+			console.log({ error });
+		}
 	};
 
 	return (
-		<View className="mt-6 p-4 bg-card rounded-lg border border-border">
-			<Text className="text-lg font-semibold text-foreground mb-4">
+		<View className="bg-card mt-6 p-4 border border-border rounded-lg">
+			<Text className="mb-4 font-semibold text-foreground text-lg">
 				Sign In
 			</Text>
 
 			{error && (
-				<View className="mb-4 p-3 bg-destructive/10 rounded-md">
+				<View className="bg-destructive/10 mb-4 p-3 rounded-md">
 					<Text className="text-destructive text-sm">{error}</Text>
 				</View>
 			)}
 
 			<TextInput
-				className="mb-3 p-4 rounded-md bg-input text-foreground border border-input"
+				className="bg-input mb-3 p-4 border border-input rounded-md text-foreground"
 				placeholder="Email"
 				value={email}
 				onChangeText={setEmail}
@@ -63,7 +68,7 @@ export function SignIn() {
 			/>
 
 			<TextInput
-				className="mb-4 p-4 rounded-md bg-input text-foreground border border-input"
+				className="bg-input mb-4 p-4 border border-input rounded-md text-foreground"
 				placeholder="Password"
 				value={password}
 				onChangeText={setPassword}
@@ -74,12 +79,12 @@ export function SignIn() {
 			<TouchableOpacity
 				onPress={handleLogin}
 				disabled={isLoading}
-				className="bg-primary p-4 rounded-md flex-row justify-center items-center"
+				className="flex-row justify-center items-center bg-primary p-4 rounded-md"
 			>
 				{isLoading ? (
 					<ActivityIndicator size="small" color="#fff" />
 				) : (
-					<Text className="text-primary-foreground font-medium">Sign In</Text>
+					<Text className="font-medium text-primary-foreground">Sign In</Text>
 				)}
 			</TouchableOpacity>
 		</View>
