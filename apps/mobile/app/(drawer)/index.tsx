@@ -4,9 +4,11 @@ import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { Container } from "@/components/container";
 import { SignIn } from "@/components/sign-in";
 import { SignUp } from "@/components/sign-up";
+import { apiClient } from "@/lib/api-client";
 
 export default function Home() {
 	const { data: session } = authClient.useSession();
+	const health = apiClient.health.$get();
 
 	return (
 		<Container>
@@ -43,12 +45,15 @@ export default function Home() {
 						<View className="flex-row items-center gap-2">
 							<View className={"h-3 w-3 rounded-full"} />
 							<Text className="text-muted-foreground">
-								{/* {healthCheck.isLoading
-                  ? "Checking..."
-                  : healthCheck.data
-                    ? "Connected to API"
-                    : "API Disconnected"} */}
-								Text
+								{health
+									.then(async (data) => {
+										const res = await data.json();
+
+										return res.message;
+									})
+									.catch(() => {
+										return "NOT OK";
+									})}
 							</Text>
 						</View>
 					</View>
