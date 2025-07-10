@@ -12,13 +12,13 @@
     "dev": "turbo dev",
     "build": "turbo build",
     "check-types": "turbo check-types",
-    "dev:native": "turbo -F native dev",
-    "dev:web": "turbo -F web dev",
-    "dev:server": "turbo -F server dev",
-    "db:push": "turbo -F server db:push",
-    "db:studio": "turbo -F server db:studio",
-    "db:generate": "turbo -F server db:generate",
-    "db:migrate": "turbo -F server db:migrate"
+    "dev:mobile": "turbo -F @apps/mobile dev",
+    "dev:web": "turbo -F @apps/web dev",
+    "dev:api": "turbo -F @apps/api dev",
+    "db:push": "turbo -F @apps/api db:push",
+    "db:studio": "turbo -F @apps/api db:studio",
+    "db:generate": "turbo -F @apps/api db:generate",
+    "db:migrate": "turbo -F @apps/api db:migrate"
   },
   "dependencies": {},
   "devDependencies": {
