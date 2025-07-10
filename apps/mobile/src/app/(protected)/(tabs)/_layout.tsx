@@ -1,38 +1,72 @@
-import { Tabs } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
+import { Feather, Ionicons } from "@expo/vector-icons";
+import { Tabs, TabList, TabTrigger, TabSlot } from "expo-router/ui";
+import { usePathname } from "expo-router";
+import { StatusBar, View } from "react-native";
 
-const tabIcons: Record<"home" | "explore" | "events" | "profile", string> = {
-  home: "home-outline",
-  explore: "search-outline",
-  events: "calendar-outline",
-  profile: "person-outline",
-};
+import { cn } from "@/lib/utils";
 
-export default function TabLayout() {
+export default function Layout() {
+  const pathname = usePathname();
+
+  const isActiveLink = (link: string) => {
+    return pathname === link;
+  };
+
   return (
-    <Tabs
-      screenOptions={({ route }) => ({
-        headerShown: false,
-        tabBarShowLabel: false,
-        tabBarActiveTintColor: "#FF7A59",
-        tabBarInactiveTintColor: "#A0A0A0",
-        tabBarStyle: {
-          backgroundColor: "#fff",
-          borderTopWidth: 0,
-          elevation: 10,
-          height: 65,
-        },
-        tabBarIcon: ({ color, size }) => {
-          const iconName =
-            tabIcons[route.name as keyof typeof tabIcons] ?? "ellipse-outline"; // fallback
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-      })}
-    >
-      <Tabs.Screen name="home" options={{ title: "Home" }} />
-      <Tabs.Screen name="explore" options={{ title: "Explore" }} />
-      <Tabs.Screen name="events" options={{ title: "Events" }} />
-      <Tabs.Screen name="profile" options={{ title: "Profile" }} />
+    <Tabs>
+      <StatusBar className="bg-background" />
+      <TabSlot />
+
+      <TabList className="bottom-6 absolute bg-white mx-3 p-1 border border-gray-200 rounded-full w-[95%] elevation-sm">
+        <TabTrigger
+          name="home"
+          href="/"
+          className={cn(
+            "p-2.5 w-16 rounded-full",
+            isActiveLink("/") && "bg-orange-400",
+          )}
+        >
+          <View className="justify-center items-center w-full h-full">
+            <Feather name="home" size={24} />
+          </View>
+        </TabTrigger>
+        <TabTrigger
+          name="moods"
+          href="/explore"
+          className={cn(
+            "p-2.5 w-16 rounded-full",
+            isActiveLink("/explore") && "bg-orange-400",
+          )}
+        >
+          <View className="justify-center items-center w-full h-full">
+            <Feather name="smile" size={24} />
+          </View>
+        </TabTrigger>
+        <TabTrigger
+          name="explore"
+          href="/events"
+          className={cn(
+            "p-2.5 w-16 rounded-full",
+            isActiveLink("/events") && "bg-orange-400",
+          )}
+        >
+          <View className="justify-center items-center w-full h-full">
+            <Ionicons name="aperture-outline" size={24} />
+          </View>
+        </TabTrigger>
+        <TabTrigger
+          name="profile"
+          href="/profile"
+          className={cn(
+            "p-2.5 w-16 rounded-full",
+            isActiveLink("/profile") && "bg-orange-400",
+          )}
+        >
+          <View className="justify-center items-center w-full h-full">
+            <Feather name="user" size={24} />
+          </View>
+        </TabTrigger>
+      </TabList>
     </Tabs>
   );
 }
