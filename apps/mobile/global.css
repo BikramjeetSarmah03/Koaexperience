@@ -4,24 +4,32 @@
 
 @layer base {
   :root {
-    --background: 222.2 84% 4.9%;
+    --background: 276, 100%, 5%;
     --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
+    --card: 276, 100%, 5%;
     --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
+    --popover: 276, 100%, 5%;
     --popover-foreground: 210 40% 98%;
     --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 217.2 32.6% 17.5%;
+    --primary-foreground: 276, 100%, 5%;
+    --secondary: 278, 100%, 15%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
+    --muted: 278, 100%, 15%;
     --muted-foreground: 215 20.2% 70%;
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 278, 100%, 15%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 72% 51%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
+    --border: 278, 100%, 15%;
+    --input: 278, 100%, 15%;
     --ring: 224.3 76.3% 94.1%;
   }
 }
+
+/* 11001C */
+/* 190028 */
+/* 220135 */
+/* 32004F */
+/* 3A015C */
+/* ffffff */
+/* 000000 */

@@ -17,7 +17,7 @@ export default function Layout() {
       <StatusBar className="bg-background" />
       <TabSlot />
 
-      <TabList className="bottom-6 absolute bg-white mx-3 p-1 border border-gray-200 rounded-full w-[95%] elevation-sm">
+      <TabList className="bottom-6 absolute bg-secondary mx-3 p-1 border border-secondary/80s rounded-full w-[95%] elevation-sm">
         <TabTrigger
           name="home"
           href="/"
@@ -27,7 +27,7 @@ export default function Layout() {
           )}
         >
           <View className="justify-center items-center w-full h-full">
-            <Feather name="home" size={24} />
+            <Feather name="home" size={24} color={"#ffffff"} />
           </View>
         </TabTrigger>
         <TabTrigger
@@ -39,7 +39,7 @@ export default function Layout() {
           )}
         >
           <View className="justify-center items-center w-full h-full">
-            <Feather name="smile" size={24} />
+            <Feather name="smile" size={24} color={"#ffffff"} />
           </View>
         </TabTrigger>
         <TabTrigger
@@ -51,7 +51,7 @@ export default function Layout() {
           )}
         >
           <View className="justify-center items-center w-full h-full">
-            <Ionicons name="aperture-outline" size={24} />
+            <Ionicons name="aperture-outline" size={24} color={"#ffffff"} />
           </View>
         </TabTrigger>
         <TabTrigger
@@ -63,7 +63,7 @@ export default function Layout() {
           )}
         >
           <View className="justify-center items-center w-full h-full">
-            <Feather name="user" size={24} />
+            <Feather name="user" size={24} color={"#ffffff"} />
           </View>
         </TabTrigger>
       </TabList>
