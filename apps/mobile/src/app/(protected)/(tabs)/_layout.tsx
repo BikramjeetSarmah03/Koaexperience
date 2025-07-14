@@ -46,7 +46,7 @@ export default function Layout() {
       <StatusBar className="bg-background" />
       <TabSlot />
 
-      <TabList className="bottom-6 absolute bg-secondary mx-3 p-1 border border-secondary/80 rounded-full w-[95%] elevation-sm">
+      <TabList className="bottom-6 absolute bg-secondary mx-3 p-1 border border-secondary rounded-full w-[95%] elevation-sm">
         <View className="top-0 right-0 bottom-0 left-0 absolute justify-center items-start px-1">
           <Animated.View
             style={[
