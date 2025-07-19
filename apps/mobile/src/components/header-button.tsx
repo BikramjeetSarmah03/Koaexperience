@@ -5,11 +5,11 @@ import { Pressable } from "react-native";
 export const HeaderButton = forwardRef<
   typeof Pressable,
   { onPress?: () => void }
->(({ onPress }, ref) => {
+>(({ onPress }) => {
   return (
     <Pressable
       onPress={onPress}
-      className="p-2 mr-2 rounded-lg bg-secondary/50 active:bg-secondary"
+      className="bg-secondary/50 active:bg-secondary mr-2 p-2 rounded-lg"
     >
       {({ pressed }) => (
         <FontAwesome
